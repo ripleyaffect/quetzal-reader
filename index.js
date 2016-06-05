@@ -1,20 +1,19 @@
-var express = require('express')
+const express = require('express')
 
-var config = require('./config')
-var PORT = config.PORT
+const { PORT } = require('./config')
 
-var app = express()
+const app = express()
 
-app.use('/static', express.static(__dirname + '/public'))
+app.use('/static', express.static(`${__dirname}/public`))
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   try {
-    res.sendFile(__dirname + '/public/index.html')
+    res.sendFile(`${__dirname}/public/index.html`)
   } catch(err) {
     res.send(err)
   }
 })
 
-app.listen(PORT, function() {
-  console.log('Listening on port ' + PORT)
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`)
 })
