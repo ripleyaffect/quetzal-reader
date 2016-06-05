@@ -4,7 +4,8 @@ node_js:
 install:
   - npm install
 script:
-  - NODE_ENV=production webpack -p
+  - export NODE_ENV=production
+  - webpack -p
 deploy:
   skip_cleanup: true
   provider: heroku
