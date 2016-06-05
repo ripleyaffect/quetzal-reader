@@ -3,7 +3,10 @@ node_js:
   - '6.2'
 install:
   - npm install
+script:
+  - NODE_ENV=production webpack -p
 deploy:
+  skip_cleanup: true
   provider: heroku
   api_key:
     secure: mlyLckm9PEn4KHHjz+aUlckcRW7HjhdLeWvHxCKZ7I5TdlGzsK8YHvm6TcCELgXRJ5gctG14YpFE8Ijpv5izUX+RCRjteJcQlbW3RyXf3SkKHRLI7+aNZ68C+CTH6iaM0its9+UBG/rYfTdufThYo38RjVJBOArpW7iVkZUmXNl2G2bZZzCXDgTI4t/81xhjmvHNd74jBYdV9fNEBiz8xniKPLso1/avNj8pFddGSy4weN21RzeiYGaLLHpdqii4QavuV3XsSlgqkQYGRy/j5Ri+GN5jJxtVK4lvB9FLppA2yWVxl6pzXVgNmp2Twy7t+px6vZKg9HKrPhPa+DLc5BwfCz+59zq08YfJOgjPN8JtqaHTpIU9UJUIzg5U4C8gNRAvr6n+M8XSAUZfdHENaZfMlUcdBonYW0W/QNPsawXoOOx9Z+aJlhKaQoNVJO1JCj1jxT2DQ99faW3gZrpZLEDtpDJAw89NEpp44mniQhqkxYftZMcHIYmEe0Jq3s3aPH9elKEZ6h2tPEK1p2FUukxBwIevDFKczfTbHkT1RQvAN1zOTdDVPS5uZEBJYIbzDu1XAkPVTeX07k0qihkgUO+OtpBclbcf2z6FY7qYmzmiSm28sBx8bLgxnXbybCgTYuKlCCkZB/iCtd0tQp/QiuDno2dIy8LYOD4Gi5zFvzI=
