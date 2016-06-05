@@ -1,5 +1,6 @@
-let plugins = []
+const webpack = require('webpack')
 
+let plugins = []
 
 console.log(process.env.NODE_ENV)
 
