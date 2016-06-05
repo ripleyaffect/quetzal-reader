@@ -4,7 +4,8 @@
   "description": "Personal Site for Thomas Peterson",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'No tests yet'"
+    "test": "echo 'No tests yet'",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
