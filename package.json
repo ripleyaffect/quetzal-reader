@@ -1,0 +1,22 @@
+{
+  "name": "2-fast-2-curious",
+  "version": "0.0.1",
+  "description": "Personal Site for Thomas Peterson",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ripleyaffect/2-fast-2-curious.git"
+  },
+  "author": "Thomas Peterson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ripleyaffect/2-fast-2-curious/issues"
+  },
+  "homepage": "https://github.com/ripleyaffect/2-fast-2-curious#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
