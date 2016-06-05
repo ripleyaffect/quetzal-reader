@@ -4,7 +4,7 @@
   "description": "Personal Site for Thomas Peterson",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "echo 'No tests yet'"
   },
   "repository": {
     "type": "git",
