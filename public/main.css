@@ -39,6 +39,7 @@ button:focus {outline:0;}
 .card-helper-text {
   position: absolute;
   width: 500px;
+  max-width: 100%;
   text-align: center;
   top: 10px;
   color: #999;
