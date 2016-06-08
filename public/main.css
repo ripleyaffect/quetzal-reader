@@ -8,6 +8,8 @@ body {
   background: linear-gradient(to bottom,  rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
+button:focus {outline:0;}
+
 .card-stack {
   width: 100%;
 }
@@ -89,18 +91,64 @@ body {
   transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-.navigation-button:hover {
-  background-color: #f8f8f8;
-}
-
 .mark-card-incorrect { 
   position: absolute;
   left: 0;
+  background-color: #F06E6E;
   border-bottom-left-radius: 5px;
+  color: white;
+}
+.mark-card-incorrect:hover {
+  background-color: #DE6666;
 }
 
 .mark-card-correct { 
   position: absolute;
   right: 0;
+  background-color: #70E094;
   border-bottom-right-radius: 5px;
+  color: white;
+}
+.mark-card-correct:hover {
+  background-color: #6ADA90;
+}
+
+.missed-cards {
+  flex-grow: 2;
+}
+
+.button__primary {
+  height: 45px;
+  width: 250px;
+  border: none;
+  margin-right: auto;
+  margin-bottom: 5px;
+  margin-left: auto;
+  background-color: rgba(96,171,248,1);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+.button__primary:hover {
+  background-color: rgba(64,150,238,1);
+}
+
+.button__secondary {
+  width: 250px;
+  border: none;
+  margin-right: auto;
+  margin-left: auto;
+  background: transparent;
+  color: rgba(96,171,248,1);
+  cursor: pointer;
+}
+.button__secondary:hover {
+  color: rgba(64,150,238,1);
+}
+
+
+.review-all-cards-button {
+  margin-bottom: 30px;
 }

@@ -14,9 +14,9 @@ const Card = ({
   onMarkCardIncorrect,
 }) => {
   return <div className={`card ${flipped ? 'flipped' : ''}`}>
-    <div className="card-helper-text" onClick={() => onFlipCard(id)}>
+    {!flipped && <div className="card-helper-text" onClick={() => onFlipCard(id)}>
       click to see answer
-    </div>
+    </div>}
     <div className="card-front" onClick={() => onFlipCard(id)}>
       <p className="card-front-content"><strong>{front}</strong></p>
     </div>
@@ -39,13 +39,12 @@ const Card = ({
 }
 
 const mapStateToProps = (state) => {
-  const activeStack = state.cardStacksById[state.activeCardStackId]
-  const activeCardIndex = activeStack.cards.indexOf(state.activeCardId)
+  const activeCardIndex = state.activeCardIds.indexOf(state.activeCardId)
   return Object.assign({},
     state.cardsById[state.activeCardId],
     {
       flipped: state.activeCardFlipped,
-      nextCardId: activeStack.cards[activeCardIndex + 1],
+      nextCardId: state.activeCardIds[activeCardIndex + 1],
     }
   )
 }
