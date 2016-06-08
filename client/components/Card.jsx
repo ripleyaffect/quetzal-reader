@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React from 'react'
 import { connect } from 'react-redux'
 
@@ -14,14 +13,17 @@ const Card = ({
   onFlipCard,
   onSetActiveCardId
 }) => {
-  return <div className="card">
-    <p className="helper-text">click question to see answer</p>
-    <div className="card-content" onClick={() => onFlipCard(id)}>
-      <p className="card-front"><strong>{front}</strong></p>
-      {flipped && <p>{back}</p>}
+  return <div className={`card ${flipped ? 'flipped' : ''}`}>
+    <div className="card-helper-text" onClick={() => onFlipCard(id)}>
+      click to see answer
     </div>
-    {flipped && <div className="card-stack-navigation-container">
-      <div className="card-stack-navigation">
+    <div className="card-front" onClick={() => onFlipCard(id)}>
+      <p><strong>{front}</strong></p>
+    </div>
+    {flipped && <div className="card-back">
+      <p className="card-back-content">{back}</p>
+    </div>}
+    {flipped && <div className="card-navigation">
         {prevCardId && <button
             className="navigation-button prev-navigation"
             onClick={() => onSetActiveCardId(prevCardId)}>
@@ -32,7 +34,6 @@ const Card = ({
             onClick={() => onSetActiveCardId(nextCardId)}>
           &gt;
         </button>}
-      </div>
     </div>}
   </div>
 }
