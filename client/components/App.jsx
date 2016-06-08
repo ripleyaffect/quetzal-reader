@@ -1,10 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import CardStack from './CardStack'
 
-const App = (props) => {
-	const { activeCardStackId } = props
-
-	return <h1>{activeCardStackId}</h1>
+export default () => {
+  return <div className="app">
+    <CardStack />
+  </div>
 }
 
-export default connect(state => state)(App)
