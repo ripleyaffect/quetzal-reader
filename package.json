@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ripleyaffect/2-fast-2-curious#readme",
   "dependencies": {
     "express": "^4.13.4",
+    "lodash": "^4.13.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
