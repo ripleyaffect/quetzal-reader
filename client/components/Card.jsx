@@ -1,7 +1,8 @@
+import _ from 'lodash'
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { flipCard, setActiveCardId  } from '../actions'
+import { flipCard, setActiveCardId } from '../actions'
 
 const Card = ({
   front,
