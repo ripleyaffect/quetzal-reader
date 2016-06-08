@@ -5,7 +5,8 @@ import { flipCard } from '../actions'
 
 const Card = ({ front, back, id, flipped, onFlipCard }) => {
   return <div className="card" onClick={() => onFlipCard(id)}>
-    <p><strong>{front}</strong></p>
+  	<p className="helper-text">click to see answer</p>
+    <p className="card-front"><strong>{front}</strong></p>
     {flipped && <p>{back}</p>}
   </div>
 }

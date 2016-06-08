@@ -7,14 +7,18 @@ import { setActiveCardId } from '../actions'
 
 const CardStack = ({ nextCardId, prevCardId, title, onSetActiveCardId }) => {
   return <div className="card-stack">
-    <h1>{title}</h1>
+    <h1 className="card-stack-title">{title}</h1>
     <Card />
     <div className="card-stack-navigation">
-      {prevCardId && <button onClick={() => onSetActiveCardId(prevCardId)}>
-        &lt; back to {prevCardId}
+      {prevCardId && <button
+          className="navigation-button prev-navigation"
+          onClick={() => onSetActiveCardId(prevCardId)}>
+        &lt; back
       </button>}
-      {nextCardId && <button onClick={() => onSetActiveCardId(nextCardId)}>
-        forward to {nextCardId} &gt;
+      {nextCardId && <button
+          className="navigation-button next-navigation"
+          onClick={() => onSetActiveCardId(nextCardId)}>
+        forward &gt;
       </button>}
     </div>
   </div>

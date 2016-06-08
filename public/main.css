@@ -1,0 +1,70 @@
+body {
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
+  background: rgb(122,188,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(122,188,255,1) 0%, rgba(96,171,248,1) 44%, rgba(64,150,238,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.card-stack {
+  width: 100%;
+}
+
+.card-stack-title {
+  text-align: center;
+}
+
+.card {
+  min-height: 400px;
+  width: 500px;
+  padding: 15px;
+  margin-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.helper-text {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 100px;
+}
+
+.card-stack-navigation {
+  position: relative;
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.navigation-button {
+  width: 45%;
+  height: 30px;
+  border: none;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.navigation-button:hover {
+  background-color: #f8f8f8;
+}
+
+.prev-navigation { 
+  position: absolute;
+  left: 0;
+}
+
+.next-navigation { 
+  position: absolute;
+  right: 0;
+}
