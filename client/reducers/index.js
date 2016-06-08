@@ -21,22 +21,24 @@ const DEFAULT_CARDS_BY_ID = {
 }
 
 const cardsById = (state=DEFAULT_CARDS_BY_ID, action) => {
-  switch (action.type) {
-    case FLIP_CARD:
-      return Object.assign({}, state, {
-        [action.cardId]: Object.assign({}, state[action.cardId], {
-          flipped: !state[action.cardId].flipped
-        })
-      })
-    default:
-      return state
-  }
+  return state
 }
 
 const activeCardId = (state=1, action) => {
   switch (action.type) {
     case SET_ACTIVE_CARD_ID:
       return action.cardId
+    default:
+      return state
+  }
+}
+
+const activeCardFlipped = (state=false, action) => {
+  switch (action.type) {
+    case FLIP_CARD:
+      return true
+    case SET_ACTIVE_CARD_ID:
+      return false
     default:
       return state
   }
@@ -58,6 +60,7 @@ const activeCardStackId = (state=1, action) => {
 export const appReducer = combineReducers({
   activeCardId,
   activeCardStackId,
+  activeCardFlipped,
   cardsById,
   cardStacksById,
 })

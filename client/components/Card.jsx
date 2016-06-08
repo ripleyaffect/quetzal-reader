@@ -4,12 +4,18 @@ import { connect } from 'react-redux'
 import { flipCard } from '../actions'
 
 const Card = ({ front, back, id, flipped, onFlipCard }) => {
-  return <div className="card">
-    <p onClick={() => onFlipCard(id)}>{flipped ? back : front}</p>
+  return <div className="card" onClick={() => onFlipCard(id)}>
+    <p><strong>{front}</strong></p>
+    {flipped && <p>{back}</p>}
   </div>
 }
 
-const mapStateToProps = (state) => state.cardsById[state.activeCardId]
+const mapStateToProps = (state) => {
+  return Object.assign({},
+    state.cardsById[state.activeCardId],
+    { flipped: state.activeCardFlipped }
+  )
+}
 
 const mapDispatchToProps = {
   onFlipCard: flipCard
