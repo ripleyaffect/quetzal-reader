@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const App = (props) => {
-	const { message } = props
+	const { activeCardStackId } = props
 
-	return <h1>{message}</h1>
+	return <h1>{activeCardStackId}</h1>
 }
 
 export default connect(state => state)(App)
