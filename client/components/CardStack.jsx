@@ -2,14 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Card from './Card'
+import ReviewCard from './ReviewCard'
 import { setActiveCardId } from '../actions'
 
 const CardStack = ({ inReview, title }) => {
   return <div className="card-stack">
     <h1 className="card-stack-title">{title}</h1>
-    {inReview ?
-      <p>In Review</p>
-    : <Card />}
+    {inReview ? <ReviewCard /> : <Card />}
   </div>
 }
 

@@ -26,12 +26,12 @@ const Card = ({
     {flipped && <div className="card-navigation">
         <button
             className="navigation-button mark-card-incorrect"
-            onClick={() => onMarkCardCorrect(id, nextCardId)}>
+            onClick={() => onMarkCardIncorrect(id, nextCardId)}>
           nah
         </button>
         <button
             className="navigation-button mark-card-correct"
-            onClick={() => onMarkCardIncorrect(id, nextCardId)}>
+            onClick={() => onMarkCardCorrect(id, nextCardId)}>
           yey
         </button>
     </div>}
