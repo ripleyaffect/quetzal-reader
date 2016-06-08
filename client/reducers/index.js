@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { FLIP_CARD } from '../actions'
+import { FLIP_CARD, SET_ACTIVE_CARD_ID } from '../actions'
 
 const DEFAULT_CARDS_BY_ID = {
   1: {
@@ -34,7 +34,12 @@ const cardsById = (state=DEFAULT_CARDS_BY_ID, action) => {
 }
 
 const activeCardId = (state=1, action) => {
-  return state
+  switch (action.type) {
+    case SET_ACTIVE_CARD_ID:
+      return action.cardId
+    default:
+      return state
+  }
 }
 
 const cardStacksById = (state={}, action) => {

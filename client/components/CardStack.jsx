@@ -3,24 +3,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Card from './Card'
+import { setActiveCardId } from '../actions'
 
-const CardStack = ({ nextCardId, prevCardId, title }) => {
+const CardStack = ({ nextCardId, prevCardId, title, onSetActiveCardId }) => {
   return <div className="card-stack">
     <h1>{title}</h1>
     <Card />
     <div className="card-stack-navigation">
-      {prevCardId && <div>&lt; back to {prevCardId}</div>}
-      {nextCardId && <div>forward to {nextCardId} &gt;</div>}
+      {prevCardId && <button onClick={() => onSetActiveCardId(prevCardId)}>
+        &lt; back to {prevCardId}
+      </button>}
+      {nextCardId && <button onClick={() => onSetActiveCardId(nextCardId)}>
+        forward to {nextCardId} &gt;
+      </button>}
     </div>
   </div>
 }
 
 const mapStateToProps = (state) => {
   const activeStack = state.cardStacksById[state.activeCardStackId]
-  console.log(activeStack)
-
   const activeCardIndex = activeStack.cards.indexOf(state.activeCardId)
-  console.log(activeCardIndex)
   return Object.assign({},
     activeStack,
     {
@@ -30,4 +32,8 @@ const mapStateToProps = (state) => {
   )
 }
 
-export default connect(mapStateToProps)(CardStack)
+const mapDispatchToProps = {
+  onSetActiveCardId: setActiveCardId
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardStack)
