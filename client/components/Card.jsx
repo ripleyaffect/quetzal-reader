@@ -1,14 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Card = ({ front, back, flipped }) => {
+import { flipCard } from '../actions'
+
+const Card = ({ front, back, id, flipped, onFlipCard }) => {
   return <div className="card">
-    <p>{flipped ? back : front}</p>
+    <p onClick={() => onFlipCard(id)}>{flipped ? back : front}</p>
   </div>
 }
 
-const mapStateToProps = (state) => {
-  return state.cardsById[state.activeCardId]
+const mapStateToProps = (state) => state.cardsById[state.activeCardId]
+
+const mapDispatchToProps = {
+  onFlipCard: flipCard
 }
 
-export default connect(mapStateToProps)(Card)
+export default connect(mapStateToProps, mapDispatchToProps)(Card)

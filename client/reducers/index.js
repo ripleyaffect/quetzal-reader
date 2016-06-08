@@ -1,22 +1,35 @@
 import { combineReducers } from 'redux'
 
-const cardsById = (state={}, action) => {
-  return {
-    1: {
-      id: 1,
-      front: 'What is your name',
-      back: 'Thomas'
-    },
-    2: {
-      id: 2,
-      front: 'What is your quest',
-      back: 'I seek the holy grail'
-    },
-    3: {
-      id: 3,
-      front: 'What is your favorite color',
-      back: 'Blue! Wait no! Yelloooooooooooooowwwwww'
-    },
+import { FLIP_CARD } from '../actions'
+
+const DEFAULT_CARDS_BY_ID = {
+  1: {
+    id: 1,
+    front: 'What is your name',
+    back: 'Thomas'
+  },
+  2: {
+    id: 2,
+    front: 'What is your quest',
+    back: 'I seek the holy grail'
+  },
+  3: {
+    id: 3,
+    front: 'What is your favorite color',
+    back: 'Blue! Wait no! Yelloooooooooooooowwwwww'
+  },
+}
+
+const cardsById = (state=DEFAULT_CARDS_BY_ID, action) => {
+  switch (action.type) {
+    case FLIP_CARD:
+      return Object.assign({}, state, {
+        [action.cardId]: Object.assign({}, state[action.cardId], {
+          flipped: !state[action.cardId].flipped
+        })
+      })
+    default:
+      return state
   }
 }
 
