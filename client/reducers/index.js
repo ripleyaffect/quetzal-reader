@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
 
-import { FLIP_CARD, SET_ACTIVE_CARD_ID } from '../actions'
+import {
+  FLIP_CARD,
+  MARK_CARD_CORRECT,
+  MARK_CARD_INCORRECT
+} from '../actions'
 
 const DEFAULT_CARDS_BY_ID = {
   1: {
@@ -24,10 +28,24 @@ const cardsById = (state=DEFAULT_CARDS_BY_ID, action) => {
   return state
 }
 
+const activeCardIds = (state=[1, 2, 3], action) => {
+  return state
+}
+
+const incorrectCardIds = (state=[], action) => {
+  switch (action.type) {
+    case MARK_CARD_INCORRECT:
+      return state.concat(action.cardId)
+    default:
+      return state
+  }
+}
+
 const activeCardId = (state=1, action) => {
   switch (action.type) {
-    case SET_ACTIVE_CARD_ID:
-      return action.cardId
+    case MARK_CARD_CORRECT:
+    case MARK_CARD_INCORRECT:
+      return action.nextCardId || null
     default:
       return state
   }
@@ -37,7 +55,8 @@ const activeCardFlipped = (state=false, action) => {
   switch (action.type) {
     case FLIP_CARD:
       return true
-    case SET_ACTIVE_CARD_ID:
+    case MARK_CARD_CORRECT:
+    case MARK_CARD_INCORRECT:
       return false
     default:
       return state
