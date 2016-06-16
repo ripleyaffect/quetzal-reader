@@ -1,9 +1,16 @@
 import { combineReducers } from 'redux'
 
-const message = (state='Hello world', action) => {
-  return state
+import { SET_USERNAME } from '../actions'
+
+const username = (state=null, action) => {
+  switch (action.type) {
+    case SET_USERNAME: 
+      return action.username
+    default:
+      return state
+  }
 }
 
 export const appReducer = combineReducers({
-  message
+  username
 })

@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const App = ({ message }) => {
+import Login from './Login'
+
+const App = ({ username }) => {
   return <div className="app">
-    <h1>{message}</h1>
+  	{!username && <Login />}
+    {username && <h1>Welcome {username}</h1>}
   </div>
 }
 
-export default connect(state => state)(App)
+export default connect(({ username }) => ({ username }))(App) 
