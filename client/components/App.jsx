@@ -1,9 +1,10 @@
 import React from 'react'
-import CardStack from './CardStack'
+import { connect } from 'react-redux'
 
-export default () => {
+const App = ({ message }) => {
   return <div className="app">
-    <CardStack />
+    <h1>{message}</h1>
   </div>
 }
 
+export default connect(state => state)(App)

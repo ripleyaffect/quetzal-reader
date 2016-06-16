@@ -25,9 +25,11 @@ module.exports = {
       {
         test: /\.(es6|jsx?)$/,
         loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-0']
-        },
+        include: __dirname + '/client'
+      },
+      {
+        test: /\.less$/,
+        loader: 'style!css!less',
         include: __dirname + '/client'
       }
     ]
