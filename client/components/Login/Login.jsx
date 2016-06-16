@@ -4,21 +4,18 @@ import { connect } from 'react-redux'
 import { setUsername } from '../../actions'
 
 class Login extends React.Component {
-	render() {
-	}
+  handleSubmit = (e) => {
+    e.preventDefault()
 
-	handleSubmit = (e) => {
-		e.preventDefault()
+    this.props.onSetUsername(this.usernameInput.value)
+  }
 
-		this.props.onSetUsername(this.usernameInput.value)
-	}
-
-	render() {
-		return <form onSubmit={this.handleSubmit}>
-			<input type="text" ref={c => this.usernameInput = c} />
-			<input type="submit" value="Login" />
-		</form>
-	}
+  render() {
+    return <form onSubmit={this.handleSubmit}>
+      <input type="text" ref={c => this.usernameInput = c} />
+      <input type="submit" value="Login" />
+    </form>
+  }
 }
 
 
