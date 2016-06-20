@@ -35,7 +35,10 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.es6']
+    extensions: ['', '.js', '.jsx', '.es6'],
+    alias: {
+      app: __dirname + '/client'
+    }
   },
   plugins: plugins,
 }

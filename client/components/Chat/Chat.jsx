@@ -4,6 +4,6 @@ import ChatBar from './ChatBar'
 import MessageList from './MessageList'
 
 export default () => <div className="chat">
-	<MessageList />
-	<ChatBar />
+  <MessageList />
+  <ChatBar />
 </div>

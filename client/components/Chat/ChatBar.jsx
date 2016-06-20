@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { sendMessage } from '../../actions'
+import { sendMessage } from 'app/actions'
 
 class ChatBar extends React.Component {
   handleSubmit = (e) => {

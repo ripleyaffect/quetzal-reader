@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setUsername } from '../../actions'
+import { setUsername } from 'app/actions'
 
 class Login extends React.Component {
   handleSubmit = (e) => {
