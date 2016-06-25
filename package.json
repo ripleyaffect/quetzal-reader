@@ -25,8 +25,6 @@
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "socket.io": "^1.4.6",
-    "socket.io-client": "^1.4.6",
     "uuid": "^2.0.2"
   },
   "engines": {
@@ -39,10 +37,6 @@
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
-    "css-loader": "^0.23.1",
-    "less": "^2.7.1",
-    "less-loader": "^2.2.3",
-    "style-loader": "^0.13.1",
     "webpack": "^1.13.1"
   }
 }
