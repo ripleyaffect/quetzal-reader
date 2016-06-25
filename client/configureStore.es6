@@ -3,7 +3,7 @@ import { createStore } from 'redux'
 import { appReducer } from './reducers'
 
 export default () => {
-	const store = createStore(appReducer)
+  const store = createStore(appReducer)
 
-	return store
+  return store
 }
