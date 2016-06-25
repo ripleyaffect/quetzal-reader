@@ -29,4 +29,3 @@ export const appReducer = combineReducers({
   cellsById,
   cellIds,
 })
-
