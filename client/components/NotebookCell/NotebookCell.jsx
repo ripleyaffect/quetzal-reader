@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { getCellById } from 'app/reducers'
+
 class NotebookCell extends React.Component {
   render() {
     const { data, type, error } = this.props
@@ -15,8 +17,8 @@ class NotebookCell extends React.Component {
   }
 }
 
-const mapStateToProps = ({ cellsById }, { id }) => {
-  return cellsById[id] || { error: `No cell with id ${id}` }
+const mapStateToProps = (state, { id }) => {
+  return getCellById(state, id)
 }
 
 export default connect(mapStateToProps)(NotebookCell)
