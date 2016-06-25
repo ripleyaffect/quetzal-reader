@@ -1,11 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { createCell } from 'app/actions'
 
 class NotebookCellForm extends React.Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			content: '',
+			data: { content: '' },
 			type: 'text',
 		}
 	}
@@ -14,19 +17,18 @@ class NotebookCellForm extends React.Component {
 		// Prevent page reload
 		e.preventDefault()
 
-		// Dummy submission
-		console.log(this.state)
+		this.props.createCell(this.state)
 
 		// Reset the content
-		this.setState({ content: '' })
+		this.setState({ data: { content: '' } })
 	};
 
 	handleChange = (e) => {
-		this.setState({ content: e.target.value })
+		this.setState({ data: { content: e.target.value } })
 	};
 
 	render() {
-		const { content } = this.state
+		const { data: { content } } = this.state
 
 		return <form onSubmit={this.handleSubmit}>
 			<input type="text" onChange={this.handleChange} value={content} />
@@ -35,4 +37,8 @@ class NotebookCellForm extends React.Component {
 	}
 }
 
-export default NotebookCellForm
+const mapStateToProps = state => ({})
+const mapDispatchToProps = ({ createCell })
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotebookCellForm)
