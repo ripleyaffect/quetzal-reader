@@ -1,16 +1,18 @@
+import _ from 'lodash'
 import { combineReducers } from 'redux'
 
-import { FOCUS_CELL } from 'app/actions'
+import { cells } from 'app/dummyData'
 
-const focusedCellId = (state=null, action) => {
-  switch (action.type) {
-    case FOCUS_CELL:
-      return action.cellId
-    default:
-      return state
-  }
+const cellsById = (state=_.keyBy(cells, 'id'), action) => {
+  return state
+}
+
+const cellIds = (state=_.map(cells, cell => cell.id), action) => {
+  return state
 }
 
 export const appReducer = combineReducers({
-  focusedCellId,
+  cellsById,
+  cellIds,
 })
+

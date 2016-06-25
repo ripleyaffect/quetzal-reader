@@ -1,30 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { focusCell } from 'app/actions'
-
 class NotebookCell extends React.Component {
-	handleClick = () => {
-		this.props.focusCell(this.props.id)
-	};
-
 	render() {
-		const { data, focused, id, type } = this.props
+		const { data, type, error } = this.props
+
+		if (error) {
+			return <div>{error}</div>
+		}
 
 		return <div className="notebook-cell" onClick={this.handleClick}>
-			This is a{focused  ? ' ' : 'n un'}focused {type} cell with data: {JSON.stringify(data)}
+			This is a {type} cell with data: {JSON.stringify(data)}
 		</div>
 	}
 }
 
-const mapStateToProps = (state, ownProps) => {
-	return {
-		focused: ownProps.id === state.focusedCellId,
-	}
+const mapStateToProps = ({ cellsById }, { id }) => {
+	return cellsById[id] || { error: `No cell with id ${id}` }
 }
 
-const mapDispatchToProps = ({
-	focusCell
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(NotebookCell)
+export default connect(mapStateToProps)(NotebookCell)

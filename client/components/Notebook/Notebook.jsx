@@ -1,12 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import NotebookCell from 'app/components/NotebookCell'
-import { cells } from 'app/dummyData'
+import { cellIds } from 'app/dummyData'
 
-const Notebook = () => {
+const Notebook = ({ cellIds }) => {
   return <div className="notebook">
-    {cells.map(cell => <NotebookCell {...cell} key={cell.id} />)}
+    {cellIds.map(id => <NotebookCell id={id} key={id} />)}
   </div>
 }
 
-export default Notebook
+export default connect(state => state)(Notebook)
