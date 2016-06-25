@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getCellById } from 'app/reducers'
+import NotebookCellData from './NotebookCellData'
 
 class NotebookCell extends React.Component {
   render() {
@@ -12,7 +13,7 @@ class NotebookCell extends React.Component {
     }
 
     return <div className="notebook-cell" onClick={this.handleClick}>
-      This is a {type} cell with data: {JSON.stringify(data)}
+      <NotebookCellData data={data} type={type} />
     </div>
   }
 }
