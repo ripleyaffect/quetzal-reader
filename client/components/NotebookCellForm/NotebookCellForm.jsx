@@ -57,9 +57,8 @@ class NotebookCellForm extends React.Component {
   };
 
   render() {
-    const { data, type } = this.state
     return <form onSubmit={this.handleSubmit}>
-      <NotebookCellDataEditor type={type} data={data} onChange={this.handleDataChange} />
+      <NotebookCellDataEditor {...this.state} onChange={this.handleDataChange} />
       <input type="submit" value="Add cell" />
     </form>
   }
