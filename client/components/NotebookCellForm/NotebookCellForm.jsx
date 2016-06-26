@@ -1,17 +1,46 @@
+import _ from 'lodash'
 import React from 'react'
 import { connect } from 'react-redux'
 
 import { createCell } from 'app/actions'
+import NotebookCellDataEditor from 'app/components/NotebookCellDataEditor'
+
+const DEFAULT_TYPE= 'code'
+
+function getDataShape(type, data={}) {
+  switch (type) {
+    case 'code': 
+      return {
+        content: data.content || '',
+        syntax: data.syntax || 'js',
+      }
+    default:
+      return {
+        content: data.content || ''
+      }
+  }
+}
 
 class NotebookCellForm extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      data: { content: '' },
-      type: 'text',
+      data: getDataShape(DEFAULT_TYPE),
+      type: DEFAULT_TYPE,
     }
   }
+
+  /**
+   * Clear the content, but keep other fields set
+   */
+  clearContent = () => {
+    this.setState({
+      data: getDataShape(
+        this.state.type,
+        _.assign({}, this.state.data, { content: '' }))
+    })
+  };
 
   handleSubmit = (e) => {
     // Prevent page reload
@@ -20,18 +49,16 @@ class NotebookCellForm extends React.Component {
     this.props.createCell(this.state)
 
     // Reset the content
-    this.setState({ data: { content: '' } })
+    this.clearContent()
   };
 
-  handleChange = (e) => {
-    this.setState({ data: { content: e.target.value } })
+  handleDataChange = (newData) => {
+    this.setState({ data: newData })
   };
 
   render() {
-    const { data: { content } } = this.state
-
     return <form onSubmit={this.handleSubmit}>
-      <input type="text" onChange={this.handleChange} value={content} />
+      <NotebookCellDataEditor {...this.state} onChange={this.handleDataChange} />
       <input type="submit" value="Add cell" />
     </form>
   }
@@ -39,6 +66,5 @@ class NotebookCellForm extends React.Component {
 
 const mapStateToProps = state => ({})
 const mapDispatchToProps = ({ createCell })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotebookCellForm)
