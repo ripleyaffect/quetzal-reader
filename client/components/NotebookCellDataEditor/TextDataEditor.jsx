@@ -7,8 +7,6 @@ export default class TextDataEditor extends React.Component {
   };
 
   handleContentChange  = (e) => {
-    console.log(e.target)
-
     this.props.onChange({ content: e.target.value })
   };
 
