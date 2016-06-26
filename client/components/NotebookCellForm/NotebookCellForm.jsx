@@ -52,12 +52,24 @@ class NotebookCellForm extends React.Component {
     this.clearContent()
   };
 
+  handleTypeChange = (newType) => {
+    this.setState({ type: newType })
+  };
+
   handleDataChange = (newData) => {
     this.setState({ data: newData })
   };
 
   render() {
+    const { type } = this.state;
+
     return <form onSubmit={this.handleSubmit}>
+      <select
+          value={type}
+          onChange={e => this.handleTypeChange(e.target.value)}>
+        <option value="text">Text</option>
+        <option value="code">Code</option>
+      </select>
       <NotebookCellDataEditor {...this.state} onChange={this.handleDataChange} />
       <input type="submit" value="Add cell" />
     </form>
