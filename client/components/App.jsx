@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Notebook from 'app/components/Notebook'
+import Reader from 'app/components/Reader'
 
-const App = () => {
+const App = ({ children, message }) => {
   return <div className="app">
-  	<Notebook />
+  	{children}
   </div>
 }
 

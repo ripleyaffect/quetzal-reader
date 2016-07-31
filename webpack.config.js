@@ -2,8 +2,6 @@ const webpack = require('webpack')
 
 let plugins = []
 
-console.log(process.env.NODE_ENV)
-
 if (process.env.NODE_ENV === 'production') {
   plugins = plugins.concat(
     new webpack.DefinePlugin({

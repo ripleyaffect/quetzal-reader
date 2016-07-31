@@ -1,9 +1,9 @@
 import { createStore } from 'redux'
 
-import { appReducer } from './reducers'
+import { app } from './reducers'
 
 export default () => {
-  const store = createStore(appReducer)
+  const store = createStore(app)
 
   return store
 }

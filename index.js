@@ -6,7 +6,7 @@ const { PORT } = require('./config')
 
 app.use('/static', express.static(`${__dirname}/public`))
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   try {
     res.sendFile(`${__dirname}/public/index.html`)
   } catch(err) {
