@@ -1,14 +1,7 @@
+export const SET_LAST_SEEN_PAGE_ID = 'SET_LAST_SEEN_PAGE_ID'
 
-export const SET_ACTIVE_BOOK_ID = 'SET_ACTIVE_BOOK_ID'
-export const SET_ACTIVE_PAGE_ID = 'SET_ACTIVE_PAGE_ID'
-
-export const setActiveBookId = (id) => ({
-  type: SET_ACTIVE_BOOK_ID,
-  id,
-})
-
-export const setActivePageId = (bookId, id) => ({
-  type: SET_ACTIVE_PAGE_ID,
+export const setLastSeenPageId = (bookId, id) => ({
+  type: SET_LAST_SEEN_PAGE_ID,
   bookId,
   id,
 })

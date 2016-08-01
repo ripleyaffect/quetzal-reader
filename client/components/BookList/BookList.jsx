@@ -1,17 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+
+import { getBook } from 'app/reducers'
 
 import BookListBook from './BookListBook'
 
-const BookList = ({ ids }) => {
+const BookList = ({ books }) => {
   return <div className="book-list">
-    {ids.map(id => <BookListBook key={id} id={id} />)}
+    {books.map(book => <BookListBook {...book} key={book.id} />)}
   </div>
 }
 
 const mapStateToProps = (state) => ({
-  ids: state.bookIds,
+  books: state.bookIds.map(id => getBook(state, id)),
 })
 
 export default connect(mapStateToProps)(BookList)

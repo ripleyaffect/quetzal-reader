@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { getPageById } from 'app/reducers'
+
+import { setLastSeenPageId } from 'app/actions'
+import { getPage } from 'app/reducers'
 
 const ActivePage = ({ title }) => {
   return <div className="active-page">
@@ -9,8 +11,28 @@ const ActivePage = ({ title }) => {
   </div>
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return getPageById(state, ownProps.params.pageId)
+class ActivePageWrapper extends React.Component {
+  componentDidMount() {
+    const { bookId, id, setLastSeenPageId } = this.props;
+    setLastSeenPageId(bookId, id)
+  }
+
+  componentDidUpdate() {
+    const { bookId, id, setLastSeenPageId } = this.props;
+    setLastSeenPageId(bookId, id)
+  }
+
+  render() {
+    return <ActivePage {...this.props} />
+  }
 }
 
-export default withRouter(connect(mapStateToProps)(ActivePage))
+const mapStateToProps = (state, ownProps) => ({
+  ...getPage(state, ownProps.params.pageId),
+})
+const mapDispatchToProps = {
+  setLastSeenPageId,
+}
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ActivePageWrapper))
