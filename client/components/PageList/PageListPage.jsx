@@ -10,9 +10,4 @@ const PageListPage = ({ bookId, id, title }) => {
   </Link>
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  ...getPage(state, ownProps.id),
-  ...ownProps,
-})
-
-export default connect(mapStateToProps)(PageListPage)
+export default PageListPage

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getBook } from 'app/reducers'
+import { fetchBooksIfNeeded } from 'app/actions'
+import { getBooks, isFetchingBooks } from 'app/reducers'
 
 import BookListBook from './BookListBook'
 
@@ -11,8 +12,39 @@ const BookList = ({ books }) => {
   </div>
 }
 
-const mapStateToProps = (state) => ({
-  books: state.bookIds.map(id => getBook(state, id)),
-})
+const BookListLoading = () => {
+  return <div className="book-list">
+    <p>Loading...</p>
+  </div>
+}
 
-export default connect(mapStateToProps)(BookList)
+class BookListWrapper extends React.Component {
+  componentDidMount() {
+    this.props.fetchBooksIfNeeded()
+  }
+
+  render() {
+    const { books, fetching } = this.props
+
+    if (fetching) {
+      return <BookListLoading />
+    }
+    if (books) {
+      return <BookList {...this.props} />
+    }
+    return <div />
+  }
+}
+
+const mapStateToProps = (state) => ({
+  books: getBooks(state),
+  fetching: isFetchingBooks(state),
+})
+const mapDispatchToProps = {
+  fetchBooksIfNeeded,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BookListWrapper)

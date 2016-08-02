@@ -14,12 +14,16 @@ const ActivePage = ({ title }) => {
 class ActivePageWrapper extends React.Component {
   componentDidMount() {
     const { bookId, id, setLastSeenPageId } = this.props;
-    setLastSeenPageId(bookId, id)
+    if (bookId && id) {
+      setLastSeenPageId(bookId, id)
+    }
   }
 
   componentDidUpdate() {
     const { bookId, id, setLastSeenPageId } = this.props;
-    setLastSeenPageId(bookId, id)
+    if (bookId && id) {
+      setLastSeenPageId(bookId, id)
+    }
   }
 
   render() {

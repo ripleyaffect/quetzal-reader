@@ -1,26 +1,34 @@
 import { combineReducers } from 'redux'
 
-import bookIds from './bookIds'
-import booksById, * as fromBooksById from './booksById'
-import lastSeenPageIdsbyBookId, * as fromLastSeenPageIdsbyBookId from './lastSeenPageIdsbyBookId'
-import pagesById, * as fromPagesById from './pagesById'
+import books, * as fromBooks from './books'
+import pages, * as fromPages from './pages'
 
 export const app = combineReducers({
-  bookIds,
-  booksById,
-  lastSeenPageIdsbyBookId,
-  pagesById,
+  books,
+  pages,
 })
 
+// Books reducer selectors
 export const getBook = (state, id) => {
-  console.log(state, id)
-  return fromBooksById.getBook(state.booksById, id)
+  return fromBooks.getBook(state.books, id)
+}
+export const getBooks = (state) => {
+  return fromBooks.getBooks(state.books)
+}
+export const isFetchingBooks = (state) => {
+  return fromBooks.isFetching(state.books)
+}
+export const isFetchingBookPages = (state, bookId) => {
+  return fromBooks.isFetchingPages(state.books, bookId)
 }
 
+// Page reducer selectors
 export const getPage = (state, id) => {
-  return fromPagesById.getPage(state.pagesById, id)
+  return fromPages.getPage(state.pages, id)
 }
-
-export const getLastSeenPageId = (state, bookId) => {
-  return fromLastSeenPageIdsbyBookId.getLastSeenPageId(state.lastSeenPageIdsbyBookId, bookId)
+export const getBookPages = (state, bookId) => {
+  return fromPages.getBookPages(state.pages, bookId)
+}
+export const getLastSeenPage = (state, bookId) => {
+  return fromPages.getLastSeenPage(state.pages, bookId)
 }

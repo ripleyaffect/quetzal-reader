@@ -2,12 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import { getLastSeenPageId } from 'app/reducers'
+import { getLastSeenPage } from 'app/reducers'
 
-const BookListBook = ({ lastSeenPageId, color, id, loading, title }) => {
+const BookListBook = ({ lastSeenPage, color, id, loading, title }) => {
   return <Link
-      to={`/${id}/${lastSeenPageId ? lastSeenPageId : '' }`}
-      activeClassName="book-list-book__selected"
+      to={`/${id}/${lastSeenPage ? lastSeenPage.id : '' }`}
       className="book-list-book"
       style={{ backgroundColor: color }}>
   </Link>
@@ -15,7 +14,7 @@ const BookListBook = ({ lastSeenPageId, color, id, loading, title }) => {
 
 const mapStateToProps = (state, ownProps) => ({
   ...ownProps,
-  lastSeenPageId: getLastSeenPageId(state, ownProps.id),
+  lastSeenPage: getLastSeenPage(state, ownProps.id),
 })
 
 export default connect(mapStateToProps)(BookListBook)
