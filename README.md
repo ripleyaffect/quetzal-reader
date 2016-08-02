@@ -1,3 +1,3 @@
-# 2 Fast 2 Curious
+# Quetzal Reader
 
-Thomas Peterson's personal site
+Reader concept
